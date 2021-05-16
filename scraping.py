@@ -1,5 +1,5 @@
 # Import Splinter, BeautifulSoup, and Pandas
-from splinter import Browser
+from splinter import Browser, browser
 from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt
@@ -20,7 +20,7 @@ def scrape_all():
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
         "last_modified": dt.datetime.now(),
-        "hemisphere": hemisphere_image_urls
+        "hemisphere": hemisphere(browser)
         }
 
     # Stop webdriver and return data
@@ -102,7 +102,7 @@ def hemisphere():
     #Visit URL
     url = 'https://marshemispheres.com/'
     browser.visit(url)
-    hemisphere_image_urls = []
+    hemisphere_image_url = []
     links = browser.find_by_css('a.product-item img')
     #Function for img links
     for i in range(len(links)):
@@ -112,7 +112,7 @@ def hemisphere():
         sample_element = browser.links.find_by_text('Sample').first
         hemisphere['img_url'] = sample_element['href']
         hemisphere['title'] = browser.find_by_css('h2.title').text
-        hemisphere_image_urls.append(hemisphere)
+        hemisphere_image_url.append(hemisphere)
         browser.back()
     return hemisphere_image_url
     
