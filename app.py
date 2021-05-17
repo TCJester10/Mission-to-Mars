@@ -9,6 +9,7 @@ mongo = PyMongo(app)
 
 #define route for HTML
 @app.route("/")
+
 def index():
    mars = mongo.db.mars.find_one()
    return render_template("index.html", mars=mars)

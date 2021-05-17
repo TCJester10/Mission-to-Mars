@@ -47,14 +47,18 @@
             <table class="table table-striped">
               <tr class="active">
             {{ mars.facts | safe }}
+          </tr>
           </div>
         </div>
+      </table>
       </div>
-      <!-- Mars Hemispheres -->
+
+      <!-- Section for Mars Hemispheres -->
       <div class="row" id="mars-hemispheres">
         <div class="page-header">
           <h2 class="text-center"><u>Mars Hemispheres</u></h2>
         </div>
+
         {% for hemisphere in mars.hemisphere %}
         <div class="col-xs-6 col-md-3">
           <div class="thumbnail">
@@ -64,7 +68,7 @@
             </div>
           </div>
         </div>
-       
+      {% endfor %}
       </div>
     </div>
   </body>
